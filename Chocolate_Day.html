@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Chocolate Day 🍫❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(135deg,#7b3f00,#d2691e);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+}
+
+/* Cute cartoon eating chocolate */
+.cartoon{
+    position:absolute;
+    bottom:10px;
+    font-size:4em;
+    animation:eat 1.2s infinite alternate;
+    opacity:0.9;
+}
+.cartoon.left{left:5%}
+.cartoon.right{right:5%}
+
+@keyframes eat{
+    from{transform:translateY(0) rotate(-5deg)}
+    to{transform:translateY(-12px) rotate(5deg)}
+}
+
+.start{
+    text-align:center;
+    z-index:2;
+}
+
+.start button{
+    padding:15px 35px;
+    font-size:1.2em;
+    border:none;
+    border-radius:30px;
+    background:#fff;
+    color:#7b3f00;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.08)}
+    100%{transform:scale(1)}
+}
+
+.card{
+    display:none;
+    max-width:480px;
+    width:90%;
+    padding:30px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(12px);
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+    text-align:center;
+    animation:fadeIn 2s ease;
+    z-index:2;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:scale(.9)}
+    to{opacity:1;transform:scale(1)}
+}
+
+h1{font-size:2em;margin-bottom:10px}
+
+.name{
+    font-size:1.4em;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+p{
+    font-size:1.05em;
+    line-height:1.6;
+}
+
+/* Shayari box */
+.shayari{
+    margin:18px 0;
+    padding:16px;
+    border-radius:18px;
+    background:rgba(0,0,0,0.25);
+    font-style:italic;
+    line-height:1.6;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.heart{
+    font-size:2em;
+    animation:heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat{
+    0%{transform:scale(1)}
+    25%{transform:scale(1.15)}
+    50%{transform:scale(1)}
+    75%{transform:scale(1.15)}
+    100%{transform:scale(1)}
+}
+
+/* Falling chocolates & hearts */
+.choco{
+    position:absolute;
+    top:-30px;
+    font-size:1.6em;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    to{transform:translateY(110vh)}
+}
+
+.footer{
+    margin-top:12px;
+    font-size:.9em;
+    opacity:.9;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🍫 Cute cartoon characters -->
+<div class="cartoon left">🐻🍫</div>
+<div class="cartoon right">🧸🍩🍫</div>
+
+<!-- 🎵 Chocolate Day Music -->
+<audio id="bgMusic" loop>
+    <source src="https://striking-apricot-xuhdoffdxk.edgeone.app/Jodi%20sotti%20jante%20Chao%20Toma%20ke%20chai%20😘%20WhatsApp%20status.mp3" type="audio/mpeg">
+</audio>
+
+<div class="start" id="start">
+    <h1>🍫 A Sweet Surprise 🍫</h1>
+    <button onclick="openSurprise()">Open With Love ❤️</button>
+</div>
+
+<div class="card" id="card">
+    <h1>Happy Chocolate Day 🍫❤️</h1>
+
+    <div class="name">
+        My Babe 🍫❤️ <br>
+        My Future Wife 🌹
+    </div>
+
+    <div class="shayari">
+        Five Star ki tarah dikhti ho tum,<br>
+        Nestle Bar ki tarah sharmati ho tum,<br>
+        Cadbury Silk jab pighalta hai muh mein,<br>
+        Waise hi meri baahon mein pighalti ho tum,<br>
+        <b>Happy Chocolate Day, meri jaan! 🍫🔥</b>
+    </div>
+
+    <p>
+        Chocolates are sweet 🍫,  
+        but you are sweeter than every bite 😘  
+        One smile of yours  
+        melts my heart like chocolate 💕
+    </p>
+
+    <p>
+        I care for you deeply 🤍  
+        I miss you every moment 🫶  
+        I want to hold you close  
+        and protect your smile forever 💖
+    </p>
+
+    <p>
+        Study with confidence 📚✨  
+        Dream big 🌟  
+        I believe in you more  
+        than you believe in yourself ❤️  
+        Success will always find you 🌈
+    </p>
+
+    <div class="heart">🍫🤎🍫</div>
+
+    <div class="footer">
+        Sweet Love, Endless Care 🤎
+    </div>
+</div>
+
+<script>
+function openSurprise(){
+    document.getElementById("start").style.display="none";
+    document.getElementById("card").style.display="block";
+    document.getElementById("bgMusic").play();
+    createChocolate();
+}
+
+function createChocolate(){
+    for(let i=0;i<35;i++){
+        let choco=document.createElement("div");
+        choco.className="choco";
+        choco.innerHTML=Math.random()>0.5?"🍫":"❤️";
+        choco.style.left=Math.random()*100+"vw";
+        choco.style.animationDuration=(3+Math.random()*4)+"s";
+        document.body.appendChild(choco);
+    }
+}
+</script>
+
+</body>
+</html>
